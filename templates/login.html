@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body class=" flex justify-center bg-gradient-to-r from-purple-600 to-blue-600">
+
+
+    <div class = "bg-white text-black p-5 shadow-2xl rounded-3xl mt-28 ">
+        <form action="/login" method="post" class = "flex-col px-4">
+            <h1 class = "text-red-700">{{Message}}</h1>
+            <h1 class = "text-4xl font-bold text-center m-9">Login</h1>
+            <h1 class = "mb-2">Username</h1>
+            <input name="username" class="border-b-2 w-96 text-center " type="text" placeholder="Type your username">
+            <h1 class = "my-2">Password</h1>
+            <input name="password" class="border-b-2 w-96 text-center" type="text" placeholder="Type your Password">
+            
+            <a href = "#"><h1 class = "text-right">Forgot password?</h1></a>
+            <button type="submit" class="text-white font-bold rounded-xl w-96 p-2 bg-gradient-to-r from-purple-600 to-blue-300 m-8">Login</button>
+            <h1>If new to Websay <a href = "/signupread"> </a></h1>
+            
+        </form>
+    </div>
+
+    
+</body>
+</html>
