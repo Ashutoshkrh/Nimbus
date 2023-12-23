@@ -6,22 +6,77 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="flex-row flex items-center p-2">
+<body class="bg-gray-100   ">
+    
+    <nav class="flex-row flex items-center p-2 shadow-xl shadow-rose-100 bg-white fixed top-0 left-0 right-0">
         <h1 class="font-bold text-xl">Nimbus</h1>
         <input class="bg-gray-200 p-1 mx-96 w-72 rounded-lg" type="text" placeholder="Search">
         <div class="flex justify-evenly w-96"> <!-- Adjust the width as needed -->
-            <button class="bg-red-500 p-1 px-4 rounded-lg font-semibold text-white">Create New Post</button>
+            <button class="bg-red-500 p-1 px-4 rounded-lg font-semibold text-white hover:shadow-lg hover:bg-red-600 hover:scale-105 hover:delay-75">Create New Post</button>
             <div>✉️</div>
             <div>🤍</div>
             <img class="h-6 w-6 rounded-full" src="https://placehold.co/400x400" alt="dp">
         </div>
+    </nav>
+    <section class=" mt-12 flex justify-between ">
+        <div class="sticky">
+        <div class="bg-white p-5 fixed left-0 shadow-xl shadow-rose-100 ">
+            <div class="justify-center">
+                <img class="h-16 w-16 rounded-full border-4 border-red-500" src="https://placehold.co/400x400" alt="profile image">
+                <h1>{{firstname + " " + lastname}}</h1>
+                <h1>@{{username}}</h1>
+                <h1>Posts </h1>
+            </div>
+            
+            <div class="flex-col space-y-2 min-h-screen mt-8">
+                <div><button class=" p-1 rounded-xl px-2">🏠 Home</button></div>
+                <div><button class=" p-1 rounded-xl px-2">⌚ Explore</button></div>
+                <div><button class=" p-1 rounded-xl px-2 ml-1"> # Trending Tags</button></div>
+                <div><button class=" p-1 rounded-xl px-2">☑️ Top post</button></div>
+                <div><button class=" p-1 rounded-xl px-2">👤 People</button></div>
+                <div><button class=" p-1 rounded-xl px-2">🔔 Notification</button></div>
+                <div><button class=" p-1 rounded-xl px-2">✈️ Direct</button></div>
+                <div><button class=" p-1 rounded-xl px-2">📊 Stats</button></div>    
+                <div><a href="/logout"><button class=" p-1 rounded-xl px-2">⚙️ Logout</button></a> </div>
+                <h1></h1> 
+            </div>  
+        </div>
     </div>
-    
-    
+                 
+        <div class="justify-self-center  space-y-8 mt-8">
+            <div class="bg-white p-5 h-[35rem] w-[65rem] rounded-xl shadow-xl shadow-rose-100  hover:shadow-2xl hover:shadow-rose-300 ">
+                <h1 class="text-lg font-semibold">A flying horse</h1>
+                <h1>In a quirky realm, Nimbus, the flying horse, pranked the animal kingdom by defying gravity, leaving bewildered creatures questioning if they missed the airborne memo.</h1>
+                <div class="justify-center flex bg-black   ">
+                    <img class=" h-96 w-[40rem]" src="https://placehold.co/400x400" alt="post">
+                </div>
+                
+                <button class="bg-white">💬 Comment</button>
+            </div>
 
-    <div>
+            
+        </div>
 
+        
+        
+        <div class="sticky shadow-rose-300">
+            <div class="overflow-y-auto h-full shadow-xl shadow-rose-100  pl-5 bg-white fixed right-0 min-h-screen pr-5 text-center">
+                <div class="overflow-y-auto h-full ">
+                <h1 class="text-red-500 font-bold text-xl justify-center ">Users online</h1>
+                {% for user in  users_list%} 
+                <div class="flex bg-white p-2 m-2 my-2 rounded-lg shadow-md scroll-smooth">
+                    <img class="rounded-full w-10 h-10" src="https://placehold.co/400x400" alt="">
+                    <h2 class="text-xs  pt-3 ml-2">{{user['username']}}</h2>
+                    <h2 class="text-5xl text-green-700  ml-2 -mt-2">•</h2>
+                </div>    
+                    {% endfor %}  
+            </div>
+        </div>
+        
+        
+        </div>
     </div>
-</body>
+        
+    </section>
+    </body>
 </html>

@@ -25,9 +25,9 @@ def hash_password(password):
    
 @app.route('/')
 def index():
-    if 'username' not in session:
+    if session['username'] == None:
         return redirect('/login')
-    return '<h1> "Home page" </h1>' 
+    return redirect('/feed') 
 
 @app.route('/signup',methods=["GET","POST"])
 def signup():
@@ -80,7 +80,9 @@ def login():
 @app.route("/logout")
 def logout():
     session["username"] = None
-    return redirect("/")
+    print("logout done")
+    # print(session)
+    return redirect("/login")
         
 if __name__ == '__main__':  
    app.run(debug=True)
