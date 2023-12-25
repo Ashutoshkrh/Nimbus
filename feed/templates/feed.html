@@ -12,7 +12,7 @@
         <h1 class="font-bold text-xl">Nimbus</h1>
         <input class="bg-gray-200 p-1 mx-96 w-72 rounded-lg" type="text" placeholder="Search">
         <div class="flex justify-evenly w-96"> <!-- Adjust the width as needed -->
-            <button class="bg-red-500 p-1 px-4 rounded-lg font-semibold text-white hover:shadow-lg hover:bg-red-600 hover:scale-105 hover:delay-75">Create New Post</button>
+            <a href="/feed/post"> <button class="bg-red-500 p-1 px-4 rounded-lg font-semibold text-white hover:shadow-lg hover:bg-red-600 hover:scale-105 hover:delay-75">Create New Post</button> </a> 
             <div>✉️</div>
             <div>🤍</div>
             <img class="h-6 w-6 rounded-full" src="https://placehold.co/400x400" alt="dp">
@@ -33,7 +33,7 @@
                 <div><button class=" p-1 rounded-xl px-2">⌚ Explore</button></div>
                 <div><button class=" p-1 rounded-xl px-2 ml-1"> # Trending Tags</button></div>
                 <div><button class=" p-1 rounded-xl px-2">☑️ Top post</button></div>
-                <div><button class=" p-1 rounded-xl px-2">👤 People</button></div>
+                <div><a href="/feed/people"><button class=" p-1 rounded-xl px-2">👤 People</button></a> </div>
                 <div><button class=" p-1 rounded-xl px-2">🔔 Notification</button></div>
                 <div><button class=" p-1 rounded-xl px-2">✈️ Direct</button></div>
                 <div><button class=" p-1 rounded-xl px-2">📊 Stats</button></div>    
@@ -44,16 +44,21 @@
     </div>
                  
         <div class="justify-self-center  space-y-8 mt-8">
+
+            {% for post in posts %}
             <div class="bg-white p-5 h-[35rem] w-[65rem] rounded-xl shadow-xl shadow-rose-100  hover:shadow-2xl hover:shadow-rose-300 ">
-                <h1 class="text-lg font-semibold">A flying horse</h1>
-                <h1>In a quirky realm, Nimbus, the flying horse, pranked the animal kingdom by defying gravity, leaving bewildered creatures questioning if they missed the airborne memo.</h1>
+                <h1 class = "text-red-500">@{{post['username']}}</h1>
+                <h1 class="text-lg font-semibold">{{post['title']}}</h1>
+                <h1>{{post['description']}}</h1>
                 <div class="justify-center flex bg-black   ">
-                    <img class=" h-96 w-[40rem]" src="https://placehold.co/400x400" alt="post">
+                    <img class=" h-96 w-[40rem]" src="{{post['img_url']}}" alt="post">
                 </div>
                 
                 <button class="bg-white">💬 Comment</button>
             </div>
 
+            {% endfor %}
+            
             
         </div>
 

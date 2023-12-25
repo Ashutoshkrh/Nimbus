@@ -25,9 +25,7 @@ def hash_password(password):
    
 @app.route('/')
 def index():
-    if session['username'] == None:
-        return redirect('/login')
-    return redirect('/feed') 
+    return render_template('login.html')
 
 @app.route('/signup',methods=["GET","POST"])
 def signup():
@@ -60,7 +58,6 @@ def signup():
           
 
 
-                
 
 @app.route('/login',methods=["GET","POST"])
 def login():
@@ -74,12 +71,13 @@ def login():
         ver_pass=verify_password(user_data['password'],password)
         if ver_pass == True:
             session["username"] = username
-            return redirect('/')
+            return redirect('/feed')
     return render_template('login.html')
         
 @app.route("/logout")
 def logout():
     session["username"] = None
+    session['people'] = None
     print("logout done")
     # print(session)
     return redirect("/login")
