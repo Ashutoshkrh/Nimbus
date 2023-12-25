@@ -6,10 +6,10 @@
     <title>Create new post</title>
 </head>
 <body class="flex-col">
-    <form action="/feed/post" method = 'post'>
+    <form action="/feed/post" method = 'post' enctype = "multipart/form-data">
     <div><input name = "title" type="text" placeholder="Enter title of your post"></div> 
     <div> <input name = "description" type="text" placeholder = "Enter description"> </div> 
-    <div> <input name = "url" type="url" placeholder="Enter the url of the image"> </div>
+    <div> <input name = "file" type="file" > </div>
     <button type = "submit"> Submit</button> 
     </form>
 </body>

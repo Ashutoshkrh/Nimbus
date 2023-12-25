@@ -23,11 +23,10 @@
         <div class="bg-white p-5 fixed left-0 shadow-xl shadow-rose-100 ">
             <div class="justify-center">
                 <img class="h-16 w-16 rounded-full border-4 border-red-500" src="https://placehold.co/400x400" alt="profile image">
-                <h1>{{firstname + " " + lastname}}</h1>
                 <h1>@{{username}}</h1>
                 <h1>Posts </h1>
             </div>
-            
+                
             <div class="flex-col space-y-2 min-h-screen mt-8">
                 <div><button class=" p-1 rounded-xl px-2">🏠 Home</button></div>
                 <div><button class=" p-1 rounded-xl px-2">⌚ Explore</button></div>
@@ -43,10 +42,10 @@
         </div>
     </div>
                  
-        <div class="justify-self-center  space-y-8 mt-8">
+        <div class="justify-self-center  space-y-8 mt-8 pb-8">
 
             {% for post in posts %}
-            <div class="bg-white p-5 h-[35rem] w-[65rem] rounded-xl shadow-xl shadow-rose-100  hover:shadow-2xl hover:shadow-rose-300 ">
+            <div class="bg-white p-5 h-[35rem] w-[65rem] rounded-xl shadow-xl shadow-rose-100  hover:shadow-2xl hover:shadow-rose-300">
                 <h1 class = "text-red-500">@{{post['username']}}</h1>
                 <h1 class="text-lg font-semibold">{{post['title']}}</h1>
                 <h1>{{post['description']}}</h1>

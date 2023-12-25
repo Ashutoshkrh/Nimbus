@@ -1,5 +1,24 @@
 from flask import *
 from connector import initialize
+# import cloudinary
+# from cloudinaryConnector import cloudinary
+# import cloudinaryConnector
+
+import cloudinary
+# Import the cloudinary.api for managing assets
+import cloudinary.api
+# Import the cloudinary.uploader for uploading assets
+import cloudinary.uploader
+
+cloudinary.config(
+    cloud_name="devogzino",
+    api_key="423542217966864",
+    api_secret="cLRCG2AAlSOi43Vc6gHsNTgdzNc",
+    secure=True,
+)
+
+
+
 feeder = Blueprint('feeder',__name__,static_folder='static',template_folder='templates')
 
 db = initialize()
@@ -13,7 +32,7 @@ def home():
     users_list = fetch_users() 
     posts_list = fetch_posts()
     session['people'] = 'people'
-    return render_template("feed.html",firstname = "Kush",lastname = "Raj",username = "Kushwaha",users_list = users_list,posts = posts_list)
+    return render_template("feed.html",username = session['username'],users_list = users_list,posts = posts_list)
 
 
 def fetch_users():
@@ -44,13 +63,15 @@ def post():
             data = request.form
             title = data['title']
             description = data['description']
-            url = data['url']
+            file_to_upload = request.files['file']
+            print(file_to_upload)
+            # save the file temporarily
+            # file_to_upload.save("temp.jpg")
+            upload_result = cloudinary.uploader.upload(file_to_upload)
+            print('upload_result',upload_result)
             post_col = db["Post"]
-            print('eengie')
-            data1 = {'username' : str(session['username']),'title' : title,'description':description,'img_url': url}
-            print(data1)
+            data1 = {'username' : str(session['username']),'title' : title,'description':description,'img_url': upload_result['url']}
             post_col.insert_one(data1)
-            print('fddychfyytfufy5ytf')
             return redirect('/feed')
         return render_template('post.html')
     else:
