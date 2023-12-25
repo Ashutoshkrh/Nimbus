@@ -1,8 +1,6 @@
 from flask import *
 from connector import initialize
-# import cloudinary
-# from cloudinaryConnector import cloudinary
-# import cloudinaryConnector
+
 
 import cloudinary
 # Import the cloudinary.api for managing assets
